@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- linking in bootstrap styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- linking in jquery functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- linking in firebase functionality -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <!-- linking in moment.js functionality -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- linking in custom js logic -->
+    <script src="/assets/javascript/logic.js"></script>
+
+  <title>Employee Time Tracker</title>
+</head>
+
+<body>
+
+<!-- creating a nav bar for the page -->
+<nav class="nav justify-content-end text-white ">
+    <a class="nav-link" href="#">Time Tracker</a>
+    <a class="nav-link" href="./instructions.html">Instructions</a>
+</nav>
+
+<!-- table display -->
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-1"></div>
+        <div class = "col-10">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Monthly Rate</th>
+                    </tr>
+                </thead>
+                <tbody id="displayTable">
+                    <!-- these are the elements that I will need to build for each element in the database
+                    and in the tbody is where I will append the data
+                    <tr>
+                    <td></td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+        </div>
+        <div class = "col-1"></div>
+    </div>
+</div>
+
+<!-- data entry form -->
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-1">
+            <!--spacer div-->
+        </div>
+        <div class = "col-6">
+            <h2>Data Entry Form</h2>
+        </div>
+        <div class="col-5">
+            <!--spacer div-->
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class = "col-6" id="empInput">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name-input">Name:</label>
+                    <input class="form-control" id="name-input" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="role-input">Role</label>
+                    <input class="form-control" id="role-input" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="startDate-input">Start Date</label>
+                    <input class="form-control" id="startDate-input" type="number">
+                </div>
+                <div class="form-group">
+                    <label for="monthlyRate-input">Monthly Rate</label>
+                    <textarea class="form-control" id="monthlyRate-input" rows="5"></textarea>
+                </div>
+                <button class="btn btn-default" id="add-emp" type="submit" onclick = "formValidation()">Submit</button>
+            </form>
+        </div>
+        <div class="col-5">
+        </div>
+    </div>
+    
+</div>
+
+</body>
+
+</html>

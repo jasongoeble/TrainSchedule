@@ -14,14 +14,14 @@
     <!-- linking in custom js logic -->
     <script src="/assets/javascript/logic.js"></script>
 
-  <title>Employee Time Tracker</title>
+  <title>Train Depot</title>
 </head>
 
 <body>
 
 <!-- creating a nav bar for the page -->
 <nav class="nav justify-content-end text-white ">
-    <a class="nav-link" href="#">Time Tracker</a>
+    <a class="nav-link" href="#">Train Depot Information</a>
     <a class="nav-link" href="./instructions.html">Instructions</a>
 </nav>
 
@@ -33,10 +33,11 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Monthly Rate</th>
+                    <th scope="col">Train Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Frequency (min)</th>
+                    <th scope="col">Next Arrival</th>
+                    <th scope="col">Minutes Away</th>
                     </tr>
                 </thead>
                 <tbody id="displayTable">
@@ -61,7 +62,7 @@
             <!--spacer div-->
         </div>
         <div class = "col-6">
-            <h2>Data Entry Form</h2>
+            <h2>Train Input Panel</h2>
         </div>
         <div class="col-5">
             <!--spacer div-->
@@ -74,20 +75,20 @@
         <div class = "col-6" id="empInput">
             <form role="form">
                 <div class="form-group">
-                    <label for="name-input">Name:</label>
-                    <input class="form-control" id="name-input" type="text">
+                    <label for="trainName-input">Train Name: </label>
+                    <input class="form-control" id="trainName-input" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="role-input">Role</label>
-                    <input class="form-control" id="role-input" type="text">
+                    <label for="destination-input">Destination: </label>
+                    <input class="form-control" id="destination-input" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="startDate-input">Start Date</label>
-                    <input class="form-control" id="startDate-input" type="number">
+                    <label for="frequency-input">Frequency (min): </label>
+                    <input class="form-control" id="frequency-input" type="number">
                 </div>
                 <div class="form-group">
-                    <label for="monthlyRate-input">Monthly Rate</label>
-                    <textarea class="form-control" id="monthlyRate-input" rows="5"></textarea>
+                    <label for="firstTime-input">First Train Time (HH:mm - military time): </label>
+                    <textarea class="form-control" id="firstTime-input" type="time"></textarea>
                 </div>
                 <button class="btn btn-default" id="add-emp" type="submit" onclick = "formValidation()">Submit</button>
             </form>

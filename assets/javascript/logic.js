@@ -13,6 +13,8 @@ firebase.initializeApp(config);
 //create a variable to reference the database
 var database = firebase.database();
 
+var completeValidation = false;
+
 //this validation function will only fire if the submit button is clicked, and uses the values directly from the input form
 function formValidation()
 {
@@ -21,7 +23,7 @@ function formValidation()
     console.log(inputData);
 
     var validated = [];
-    var completeValidation = false;
+    completeValidation = false;
 
     //preliminary check to make sure there is a value in each field, as they are all required
     for (i=0; i<inputData.length; i++)
@@ -59,7 +61,7 @@ function formValidation()
     if (validated[0] && validated[1] & validated[2] === true)
     {
         //moment.js will validate that the first train time input is valid
-        if (moment(inputData[4],"HH:mm").isValid())
+        if (moment(inputData[3],"HH:mm").isValid())
         {
             //update my validation tracking array that the time input is valid
             validated[3] = true;

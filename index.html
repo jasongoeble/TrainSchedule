@@ -12,7 +12,7 @@
     <!-- linking in moment.js functionality -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- linking in custom js logic -->
-    <script src="/assets/javascript/logic.js"></script>
+    <script src="./assets/javascript/logic.js"></script>
 
   <title>Train Depot</title>
 </head>
@@ -88,9 +88,9 @@
                 </div>
                 <div class="form-group">
                     <label for="firstTime-input">First Train Time (HH:mm - military time): </label>
-                    <textarea class="form-control" id="firstTime-input" type="time"></textarea>
+                    <textarea class="form-control" id="firstTime-input" type="text"></textarea>
                 </div>
-                <button class="btn btn-default" id="add-emp" type="submit" onclick = "formValidation()">Submit</button>
+                <button class="btn btn-default" id="add-train" type="submit" onclick = "formValidation()">Submit</button>
             </form>
         </div>
         <div class="col-5">

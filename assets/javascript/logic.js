@@ -153,18 +153,19 @@ $("#add-train").click(function(event)
     $("firstArrival-input").val("");
 });
 
-database.ref().on("value", function(snapshot)
+/*database.ref().on("value", function(snapshot)
 {
+ 
 },
 function(errorObject) 
 {
     // In case of error this will print the error
     console.log("The read failed: " + errorObject.code);
-});
+});*/
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey)
 {
-    //retrieve data from the database as a child object is added
+       //retrieve data from the database as a child object is added
     var showName = childSnapshot.val().trainName;
     var showDestination = childSnapshot.val().destination;
     var showFrequency = childSnapshot.val().frequency;
@@ -174,6 +175,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey)
     //append the newly added child object attributes to the table for display to the user
     //because the table allows the data to perpetuate infinitiely, all data (regardless of user) will be visible to all visitors
     $("#displayTable").append("<tr><td>"+showName+"</td><td>"+showDestination+"</td><td>"+showFrequency+"</td><td>"+shownextArrival+"</td><td>"+showminutesAway+"</td></tr>");
+    
 },
 function (errorObject) 
 {

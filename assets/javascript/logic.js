@@ -148,7 +148,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey)
     var showFirstArrival = childSnapshot.val().firstArrival;
 
     //convert the first arrival time
-    var firstTimeConv = moment(firstArrival, "HH:mm").subtract(1,"years");
+    var firstTimeConv = moment(childSnapshot.val().firstArrival, "HH:mm").subtract(1,"years");
     console.log("First Time Conv: "+firstTimeConv);
     //pull the current time and put it into military time
     var currentTime = moment();
@@ -159,10 +159,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey)
     var diffTime = moment().diff(moment(firstTimeConv), "minutes");
     console.log("Time Difference: "+diffTime);
     //the remainder of the time
-    var timeRemainder = diffTime % frequency;
+    var timeRemainder = diffTime % childSnapshot.val().frequency;
     console.log("Remainder: "+timeRemainder);
     //the minutes until the train arrives at the depot based upon the stated frequency
-    var timeTillTrain = frequency - timeRemainder;
+    var timeTillTrain = childSnapshot.val().frequency - timeRemainder;
     console.log("Time Until Train: "+timeTillTrain);
     //formatted next arrival time of train
     var nextArrival = moment().add(timeTillTrain, "minutes");
@@ -170,8 +170,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey)
     nextArrival = moment(nextArrival).format("hh:mm");
     console.log("Next Arrival formatted: "+nextArrival);
 
-    var shownextArrival = childSnapshot.val().nextArrival;
-    var showminutesAway = childSnapshot.val().minutesAway;
+    var shownextArrival = nextArrival;
+    var showminutesAway = timeTillTrain;
 
     //append the newly added child object attributes to the table for display to the user
     //because the table allows the data to perpetuate infinitiely, all data (regardless of user) will be visible to all visitors

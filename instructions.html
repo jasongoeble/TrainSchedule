@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- linking in bootstrap styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- linking in jquery functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- linking in firebase functionality -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <!-- linking in moment.js functionality -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+
+  <title>Train Depot</title>
+</head>
+
+<body>
+
+<!-- creating a nav bar for the page -->
+<nav class="nav justify-content-end text-white ">
+    <a class="nav-link" href="./index.html">Train Depot Information</a>
+    <a class="nav-link" href="#">Instructions</a>
+</nav>
+
+<div class="row">
+    <div class="col-1">
+        <!-- spacer div -->
+    </div>
+    <div class="col-10">
+        <h2>Here are the simple instructions for the simple train depot page.</h2>
+    </div>
+    <div="col-1">
+        <!-- spacer div -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1">
+        <!-- spacer div -->
+    </div>
+    <div class="col-10">
+        <ul class="list-group">
+        <li class="list-group-item">The following items are required on the input page:</li>
+    
+        <li class="list-group-item list-group-item-dark">Name of the train - input field will accept any characters.</li>
+        <li class="list-group-item list-group-item-dark">Destination of the train - input field will accept characters.</li>
+        <li class="list-group-item list-group-item-dark">Frequency of the train - only positive integers greater than 0 will be accepted.</li>
+        <li class="list-group-item list-group-item-dark">First arrival time of the train - only times listed in military format (HH:mm) will be accepted.</li>
+    </ul>
+    </div>
+    <div class="col-1">
+        <!-- spacer div -->
+    </div>
+</div>
+   <!-- linking in custom js logic -->
+   <script src="./assets/javascript/logic.js"></script>
+
+</body>
+
+</html>

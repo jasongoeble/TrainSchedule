@@ -27,7 +27,20 @@
 <!-- table display -->
 <div class = "container-fluid">
     <div class = "row">
-        <div class = "col-1"></div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-10">
+            <h2>Current Train Information</h2>
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col-1">
+             <!--spacer div-->
+        </div>
         <div class = "col-10">
             <table class="table table-bordered">
                 <thead>
@@ -40,16 +53,12 @@
                     </tr>
                 </thead>
                 <tbody id="displayTable">
-                    <!-- these are the elements that I will need to build for each element in the database
-                    and in the tbody is where I will append the data
-                    <tr>
-                    <td></td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
         </div>
-        <div class = "col-1"></div>
+        <div class = "col-1">
+             <!--spacer div-->
+        </div>
     </div>
 </div>
 
@@ -67,9 +76,11 @@
             <!--spacer div-->
         </div>
     </div>
-        
+    
+    <!-- form div -->
     <div class="row">
         <div class="col-1">
+            <!--spacer div-->   
         </div>
         <div class = "col-6" id="empInput">
             <form role="form">
@@ -89,10 +100,11 @@
                     <label for="firstTime-input">First Train Time (HH:mm - military time): </label>
                     <input class="form-control" id="firstTime-input" type="text">
                 </div>
-                <button class="btn btn-default" id="add-train" onclick="formValidation()" type="submit">Submit</button>
+                <button class="btn btn-primary" id="add-train" onclick="formValidation()" type="submit">Submit</button>
             </form>
         </div>
         <div class="col-5">
+            <!--spacer div-->
         </div>
     </div>
     

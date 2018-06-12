@@ -105,7 +105,7 @@ $("#add-train").click(function(event)
     //these two variables require some manipulation to get both the right formatting and to permit derivation of additional information 
     var frequency = $("#frequency-input").val().trim();
     console.log("Frequency: "+frequency);
-    var firstArrival = $("#firstArrival-input").val().trim();
+    var firstArrival = $("#firstTime-input").val().trim();
     console.log("First Arrival: "+firstArrival);
     //convert the first arrival time
     var firstTimeConv = moment(firstArrival, "HH:mm").subtract(1,"years");

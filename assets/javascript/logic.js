@@ -14,7 +14,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 //this validation function will only fire if the submit button is clicked, and uses the values directly from the input form
-/*function formValidation()
+function formValidation()
 {
     // Get the value of the input fields
     var inputData = [$("#trainName-input").val().trim(), $("#destination-input").val().trim(), $("#frequency-input").val().trim(), $("#firstTime-input").val().trim()];
@@ -86,7 +86,7 @@ var database = firebase.database();
     }
 
     return(completeValidation);
-}*/
+}
 
 $("#add-train").click(function(event)
 {
@@ -94,33 +94,32 @@ $("#add-train").click(function(event)
 
     //call the user input validation function
     //hopefully prevents the inclusion of garbage data from the database....gigo
-   // if (formValidation())
-    //{
-
-    //capture values provided by user into variables for push to database
-    var trainName = $("#trainName-input").val().trim();
-    console.log("Train Name: "+trainName);
-    var destination = $("#destination-input").val().trim();
-    console.log("Destination: "+destination);
-    //these two variables require some manipulation to get both the right formatting and to permit derivation of additional information 
-    var frequency = $("#frequency-input").val().trim();
-    console.log("Frequency: "+frequency);
-    var firstArrival = $("#firstTime-input").val().trim();
-    console.log("First Arrival: "+firstArrival);
-    //push validated user values (post a little manipulation) to database
-    database.ref().push(
-        {
-            trainName: trainName,
-            destination: destination,
-            frequency: frequency,
-            firstArrival: firstArrival,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
-        });
-    //}
-   // else
-    //{
-
-    //}
+    if (completeValidation === true)
+    {
+        //capture values provided by user into variables for push to database
+        var trainName = $("#trainName-input").val().trim();
+        console.log("Train Name: "+trainName);
+        var destination = $("#destination-input").val().trim();
+        console.log("Destination: "+destination);
+        //these two variables require some manipulation to get both the right formatting and to permit derivation of additional information 
+        var frequency = $("#frequency-input").val().trim();
+        console.log("Frequency: "+frequency);
+        var firstArrival = $("#firstTime-input").val().trim();
+        console.log("First Arrival: "+firstArrival);
+        //push validated user values (post a little manipulation) to database
+        database.ref().push(
+            {
+                trainName: trainName,
+                destination: destination,
+                frequency: frequency,
+                firstArrival: firstArrival,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            });
+    }
+    else
+    {
+        alert("Your data is not in the right format....Doug!");
+    }
 
     //clear the form fields for the user
     $("#trainName-input").val("");
@@ -128,16 +127,6 @@ $("#add-train").click(function(event)
     $("#frequency-input").val("");
     $("firstArrival-input").val("");
 });
-
-/*database.ref().on("value", function(snapshot)
-{
- 
-},
-function(errorObject) 
-{
-    // In case of error this will print the error
-    console.log("The read failed: " + errorObject.code);
-});*/
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey)
 {
@@ -182,15 +171,3 @@ function (errorObject)
 {
         console.log("Errors handled: " + errorObject.code);
 });
-
-//database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot)
-//{
-//    console.log(snapshot.key);
-//    var showName = childSnapshot.val().trainName;
-//    var showDestination = childSnapshot.val().destination;
-//    var showFrequency = childSnapshot.val().frequency;
-//    var shownextArrival = childSnapshot.val().nextArrival;
-//    var showminutesAway = childSnapshot.val().minutesAway;
-
-    //$("#displayTable").append("<tr><td>"+showName+"</td><td>"+showDestination+"</td><td>"+showFrequency+"</td><td>"+shownextArrival+"</td><td>"+showminutesAway+"</td></tr>");
-//});

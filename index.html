@@ -89,7 +89,7 @@
                     <label for="firstTime-input">First Train Time (HH:mm - military time): </label>
                     <input class="form-control" id="firstTime-input" type="text">
                 </div>
-                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                <button class="btn btn-default" id="add-train" onclick="formValidation()" type="submit">Submit</button>
             </form>
         </div>
         <div class="col-5">
@@ -100,8 +100,6 @@
 
     <!-- linking in custom js logic -->
     <script src="./assets/javascript/logic.js"></script>
-
-<!-- removed from the button: onclick = "formValidation() -->
 
 </body>
 

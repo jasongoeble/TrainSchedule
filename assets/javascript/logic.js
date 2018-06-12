@@ -107,28 +107,6 @@ $("#add-train").click(function(event)
     console.log("Frequency: "+frequency);
     var firstArrival = $("#firstTime-input").val().trim();
     console.log("First Arrival: "+firstArrival);
-    //convert the first arrival time
-    var firstTimeConv = moment(firstArrival, "HH:mm").subtract(1,"years");
-    console.log("First Time Conv: "+firstTimeConv);
-    //pull the current time and put it into military time
-    var currentTime = moment();
-    console.log("Current Time: "+currentTime);
-    currentTime = moment(currentTime).format("hh:mm");
-    console.log("Current Time Formatted: "+currentTime);
-    //calculate the difference between the times
-    var diffTime = moment().diff(moment(firstTimeConv), "minutes");
-    console.log("Time Difference: "+diffTime);
-    //the remainder of the time
-    var timeRemainder = diffTime % frequency;
-    console.log("Remainder: "+timeRemainder);
-    //the minutes until the train arrives at the depot based upon the stated frequency
-    var timeTillTrain = frequency - timeRemainder;
-    console.log("Time Until Train: "+timeTillTrain);
-    //formatted next arrival time of train
-    var nextArrival = moment().add(timeTillTrain, "minutes");
-    console.log("Next Arrival: "+nextArrival);
-    nextArrival = moment(nextArrival).format("hh:mm");
-    console.log("Next Arrival formatted: "+nextArrival);
     //push validated user values (post a little manipulation) to database
     database.ref().push(
         {
@@ -136,9 +114,7 @@ $("#add-train").click(function(event)
             destination: destination,
             frequency: frequency,
             firstArrival: firstArrival,
-            nextArrival: nextArrival,
-            minutesAway: timeTillTrain,
-            dateAdded: firebase.database.ServerValue, TIMESTAMP
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
     //}
    // else
@@ -165,10 +141,35 @@ function(errorObject)
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey)
 {
-       //retrieve data from the database as a child object is added
+    //retrieve data from the database as a child object is added
     var showName = childSnapshot.val().trainName;
     var showDestination = childSnapshot.val().destination;
     var showFrequency = childSnapshot.val().frequency;
+    var showFirstArrival = childSnapshot.val().firstArrival;
+
+    //convert the first arrival time
+    var firstTimeConv = moment(firstArrival, "HH:mm").subtract(1,"years");
+    console.log("First Time Conv: "+firstTimeConv);
+    //pull the current time and put it into military time
+    var currentTime = moment();
+    console.log("Current Time: "+currentTime);
+    currentTime = moment(currentTime).format("hh:mm");
+    console.log("Current Time Formatted: "+currentTime);
+    //calculate the difference between the times
+    var diffTime = moment().diff(moment(firstTimeConv), "minutes");
+    console.log("Time Difference: "+diffTime);
+    //the remainder of the time
+    var timeRemainder = diffTime % frequency;
+    console.log("Remainder: "+timeRemainder);
+    //the minutes until the train arrives at the depot based upon the stated frequency
+    var timeTillTrain = frequency - timeRemainder;
+    console.log("Time Until Train: "+timeTillTrain);
+    //formatted next arrival time of train
+    var nextArrival = moment().add(timeTillTrain, "minutes");
+    console.log("Next Arrival: "+nextArrival);
+    nextArrival = moment(nextArrival).format("hh:mm");
+    console.log("Next Arrival formatted: "+nextArrival);
+
     var shownextArrival = childSnapshot.val().nextArrival;
     var showminutesAway = childSnapshot.val().minutesAway;
 
